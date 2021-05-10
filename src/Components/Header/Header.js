@@ -11,9 +11,9 @@ class Header extends Component{
   render(){
   return(
     <>
-      <div id='titleImage' >
-        <img src='./images/newbanner.jpg' alt='Wimpitts Banner' />
-      </div>
+      
+      <img src='./images/newbanner.jpg' alt='Wimpitts Banner' />
+      
       <header>
         <h1>
           Wimpitts
