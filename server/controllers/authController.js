@@ -10,7 +10,7 @@ module.exports ={
     const result = await db.get_user([email]);
     const existingUser = result[0];
     if (existingUser){
-      return res.status(409).send(alert(`Account already exists with eamil ${email}`))
+      return res.status(409).send(`Account already exists with eamil ${email}`);
     };
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(password,salt);
