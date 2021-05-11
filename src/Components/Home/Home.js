@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, {Component} from 'react';
 
 export default class Home extends Component{
@@ -19,6 +20,30 @@ export default class Home extends Component{
     this.setState({ password: value });
   }
 
+  signUp(){
+    console.log('signUp pressed')
+    const {email, password} = this.state;
+    axios.post('/auth/signup', {email, password})
+    .then(res =>{
+      console.log('signUp response')
+      console.log(res.data)
+      this.setState({email: '', password: ''})
+
+    })
+    .catch(err => {
+      alert(`an error has occured ${err}`);
+      console.log(err)
+    })
+  }
+
+  login(){
+
+  }
+
+  continue(){
+
+  }
+
   render(){
     return(
       <div id='home' >
@@ -37,10 +62,10 @@ export default class Home extends Component{
         onChange={e => this.handlePassword(e.target.value)}
         />
       <br />
-      <button>Log In</button>
-      <button>Sign Up</button>
+      <button onClick={() => (this.login())}>Log In</button>
+      <button onClick={() => (this.signUp())}>Sign Up</button>
       <br />
-      <button>Continue As Guest</button>
+      <button onClick={() => (this.continue())}>Continue As Guest</button>
       </div>
     )
   }

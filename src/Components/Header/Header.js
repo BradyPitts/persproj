@@ -12,7 +12,6 @@ class Header extends Component{
   return(
     <>
       
-      <img src='./images/newbanner.jpg' alt='Wimpitts Banner' />
       
       <header>
         <h1>

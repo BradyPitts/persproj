@@ -30,7 +30,7 @@ app.use(
 );
 
 
-
+app.post('/auth/signup', authController.signUp)
 
 
 
