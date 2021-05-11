@@ -1,0 +1,4 @@
+-- UPDATE wimpitts_users
+-- SET admin = true
+-- WHERE id = 4
+-- RETURNING *;

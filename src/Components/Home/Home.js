@@ -35,7 +35,7 @@ export default class Home extends Component{
 
     })
     .catch(err => {
-      alert(`an error has occured ${err}`);
+      alert(`a sign up error has occured ${err}`);
       console.log(err)
     })
   }
@@ -51,7 +51,7 @@ export default class Home extends Component{
 
     })
     .catch(err => {
-      alert(`an error has occured ${err}`);
+      alert(`a login error has occured ${err}`);
       console.log(err)
     })
   }
@@ -86,7 +86,9 @@ export default class Home extends Component{
       <button onClick={() => (this.login())}>Log In</button>
       <button onClick={() => (this.signUp())}>Sign Up</button>
       <br />
-      <button onClick={() => (this.continue())}>Continue As Guest</button>
+      {/* <Link> */}
+        <button>Continue As Guest</button>
+      {/* </Link> */}
       </div>
     )
   }
