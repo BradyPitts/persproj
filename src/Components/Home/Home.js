@@ -9,6 +9,10 @@ export default class Home extends Component{
       password: '',
       admin: false
     }
+    this.signUp = this.signUp.bind(this);
+    this.login = this.login.bind(this);
+    this.continue = this.continue.bind(this);
+    this.logout = this.logout.bind(this);
 
   }
 
@@ -22,8 +26,8 @@ export default class Home extends Component{
 
   signUp(){
     console.log('signUp pressed')
-    const {email, password} = this.state;
-    axios.post('/auth/signup', {email, password})
+    const {email, password, admin} = this.state;
+    axios.post('/auth/signup', {email, password, admin})
     .then(res =>{
       console.log('signUp response')
       console.log(res.data)
@@ -37,10 +41,27 @@ export default class Home extends Component{
   }
 
   login(){
+    console.log(`login pressed`)
+    const {email, password} = this.state;
+    axios.post('/auth/login', {email, password})
+    .then(res =>{
+      console.log('login response')
+      console.log(res.data)
+      this.setState({email: '', password: ''})
 
+    })
+    .catch(err => {
+      alert(`an error has occured ${err}`);
+      console.log(err)
+    })
+  }
+
+  logout(){
+    console.log('logout pressed')
   }
 
   continue(){
+    console.log(`continue pressed`)
 
   }
 

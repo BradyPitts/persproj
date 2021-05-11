@@ -11,12 +11,7 @@ class Header extends Component{
   render(){
   return(
     <>
-      
-      
       <header>
-        <h1>
-          Wimpitts
-        </h1>
         <nav>
           {/* <Link>Home</Link> */}
           {/* <Link>Shop</Link> */}
