@@ -5,14 +5,13 @@ import Home from './Components/Home/Home';
 
 
 export default class App extends Component {
-  constructor(){
-    super();
 
 
-  }
+  
 
 render(){
   return (
+
     <div className="App">
       <img src='./images/newbanner.jpg' alt='Wimpitts Banner' />
 
