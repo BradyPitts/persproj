@@ -3,6 +3,7 @@ const express = require('express');
 const session = require('express-session');
 const massive = require('massive');
 const authController = require('./controllers/authController');
+const productController = require('./controllers/productController');
 
 
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env;
@@ -32,7 +33,8 @@ app.use(
 
 app.post('/auth/signup', authController.signUp);
 app.post('/auth/login', authController.login);
-app.delete('/auth/logout')
+app.delete('/auth/logout', authController.logout)
+
 app.get('api/products')
 
 

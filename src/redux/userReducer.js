@@ -10,6 +10,15 @@ const initialState = {
 const REQUEST_USER_DATA = 'REQUEST_USER_DATA'
 
 
+export const requestUserData = () =>{
+  let data = axios.get('/auth/user-data')
+  .then(res => res.data)
+  return{
+    type: REQUEST_USER_DATA,
+    payload: data
+  }
+}
+
 export const signUp = () => {
   console.log('signUp pressed')
   const {email, password, admin} = this.state;
@@ -44,9 +53,21 @@ export const login = () => {
 
 export const logout = () => {
   console.log('logout pressed')
+  axios.delete('/auth/logout');
 };
 
 export const continueAsGuest = () => {
   console.log(`continue pressed`)
 
+};
+
+
+export default function reducer(state = initialState, action){
+  switch(action.type){
+    case REQUEST_USER_DATA + "_FULLFILLED":
+      const {user_id, email} = action.payload.user
+      return {user_id, email};
+    default:
+    return state
+  }
 }

@@ -22,6 +22,7 @@ class Header extends Component{
 
   render(){
     const {email, password} = this.props.user;
+    console.log(`${email, password}`)
   return(
     <>
       <header>
@@ -57,7 +58,7 @@ class Header extends Component{
 
 function mapStateToProps(state){
   return {
-    eamil: state.email,
+    email: state.email,
     password: state.password
   }
 }

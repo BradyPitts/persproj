@@ -18,5 +18,9 @@ module.exports = {
 
   checkout: async (req,res) =>{
 
+  },
+
+  saveCartToWishlist: async (req,res) =>{
+    
   }
 }
