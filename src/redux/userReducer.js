@@ -68,9 +68,8 @@ export const continueAsGuest = () => {
 export default function reducer(state = initialState, action){
   switch(action.type){
     case REQUEST_USER_DATA + "_FULLFILLED":
-      console.log(action.payload.user)
-      const {user_id, email} = action.payload.authenticatedUser
-      return {user_id, email};
+      console.log(action.payload)
+      return {...state, email: action.payload};
 
     default:
     // console.log(state)

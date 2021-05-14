@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
 const massive = require('massive');
-const authController = require('./controllers/authController');
+const authController2 = require('./controllers/authController2');
 const productController = require('./controllers/productController');
 
 
@@ -34,9 +34,10 @@ app.use(
 );
 
 
-app.post('/auth/signup', authController.signUp);
-app.post('/auth/login', authController.login);
-app.delete('/auth/logout', authController.logout);
+app.post('/auth/signup', authController2.signUp);
+app.post('/auth/login', authController2.login);
+app.delete('/auth/logout', authController2.logout);
+app.get('/auth/user-data', authController2.userData);
 
 app.get('/api/products', productController.getAll);
 app.post('/api/products', productController.addToCart);

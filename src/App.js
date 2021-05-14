@@ -1,25 +1,21 @@
-import React, {Component} from 'react';
-import './App.css';
-import Header from './Components/Header/Header';
-import Home from './Components/Home/Home';
-import Shop from './Components/Shop/Shop';
+import React, { Component } from 'react';
+import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
 import Login from './Components/Login/Login';
+import Home from './Components/Home/Home';
+import './App.css';
 
+class App extends Component {
 
-export default class App extends Component {
+    render() {
+        return (
+            <HashRouter>
+                <Switch>
+                    <Route path='/' component={Login} exact />
+                    <Route path='/my-products' component={Home} />
+                </Switch>
+            </HashRouter>
+        );
+    }
+}
 
-
-  
-
-render(){
-  return (
-
-    <div className="App">
-      {/* <img src='./images/newbanner.jpg' alt='Wimpitts Banner' /> */}
-      {/* {isLoggedIn ? null : <Login />} */}
-      {/* <Header /> */}
-      {/* <Home /> */}
-      <Shop />
-    </div>
-  )};
-};
+export default App;

@@ -1,71 +1,55 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
-import {HashRouter} from 'react-router-dom';
-import {connect} from 'react-redux';
-import {signUp, login, logout, continueAsGuest, requestUserData} from '../../redux/userReducer';
+import React, { Component } from 'react';
+import Background from '../shared/Background/Background'
+import axios from 'axios';
+import './Login.css';
 
 
-class Login extends Component{
+class Login extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: '',
+            password: ''
+        }
+    }
 
+    async componentDidMount() {
+        let res = await axios.get('/auth/user-data')
+        if (res.data.loggedIn) this.props.history.push('/my-products')
+    }
 
-  componentDidMount(){
-    console.log(this.state);
-    console.log(this.props);
-    this.props.requestUserData();
-  }
+    async login(e) {
+        if (e) e.preventDefault();
+        const { email, password } = this.state;
+        try {
+            const res = await axios.post('/auth/login', { email, password });
+            if (res.data.loggedIn) {
+                let someone = res.data.authenticatedUser
+                this.props.history.push('/my-products')
+            }
+        } catch (e) {
+            alert('Login failed. Please try again.');
+        }
+    }
 
-  handleEmail(value) {
-    this.setState({ email: value });
-    // console.log(this.state.email)
-  }
-
-  handlePassword(value) {
-    this.setState({ password: value });
-    // console.log(this.state.password)
-  }
-
-  render(){
-    console.log(this.props)
-    const {email, password} = this.props;
-    const isLoggedin = false;
-    console.log(`${email} ${password}`)
-  return(
-    <div>
-      <header>
-        
-
-        
-      <input
-        type="email"
-        placeholder="Email"
-        value={this.email}
-        onChange={e => this.handleEmail(e.target.value)}
-        />
-      <br />
-      <input
-        type="password"
-        placeholder="Password"
-        value={this.password}
-        onChange={e => this.handlePassword(e.target.value)}
-        />
-      <br />
-      <button onClick={() => login(this.state) }>Log In</button>
-      <button onClick={() => signUp(this.state)}>Sign Up</button>
-      <br />
-        <button onClick={() => (this.props.continueAsGuest())}>Continue As Guest</button>
-
-      </header>
-    </div>
-    );
-  }
-}  
-
-function mapStateToProps(state){
-  console.log(state)
-  return {
-    email: state.email,
-    admin: false
-  }
+    render() {
+        return (
+            <Background>
+                <img src='./images/newbanner.jpg' alt='Wimpitts Banner' />
+                <form className='login-form' onSubmit={(e) => this.login(e)}>
+                    <div className="form-group">
+                        <label>Email</label>
+                        <input type="text" className="form-control" placeholder="Email" onChange={(e) => this.setState({ email: e.target.value })} />
+                    </div>
+                    <div className="form-group">
+                        <label>Password</label>
+                        <input type="password" className="form-control" placeholder="Password" onChange={(e) => this.setState({ password: e.target.value })} />
+                    </div>
+                    <button className='btn btn-success btn-lg' type='submit'>Log in</button>
+                </form>
+            </Background>
+        )
+    }
 }
 
-export default connect(mapStateToProps, {signUp, login, logout, continueAsGuest, requestUserData}) (Login);
+export default Login

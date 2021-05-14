@@ -17,7 +17,7 @@ module.exports ={
     const registeredUser = await db.sign_up_user([email, hash, admin]);
     console.log(registeredUser)
     const user = registeredUser[0];
-    req.session.user = {isAdmin: user.admin, email: user.email, id: user.user_id};
+    const authenticatedUser = {isAdmin: user.admin, email: user.email, id: user.id};
     return res.status(201).send({loggedIn: true, authenticatedUser});
   },
 
@@ -25,6 +25,7 @@ module.exports ={
   login: async (req,res) =>{
     const {email, password} = req.body;
     const foundUser = await req.app.get('db').get_user([email]);
+
     const user = foundUser[0];
     if (!user){
       return res.status(401).send('User not found');
@@ -33,24 +34,23 @@ module.exports ={
     if (!isAuthenticated){
       return res.status(403).send('Wrong password');
     }
-    req.session.user = {isAdmin:user.admin, id: user.user_id,};
+    const {authenticatedUser} = {isAdmin:user.admin, id: user.id, username: user.username};
+    req.session.user = authenticatedUser
     return res.status(200).send({loggedIn: true, authenticatedUser});
   },
 
-  
   logout: (req,res) =>{
     req.session.destroy();
     return res.sendStatus(200);
   },
 
-  userData: async (req,res) =>{
-    console.log('user data server ping');
+  userData: async (req, res) => {
+    console.log("inuser")
     const { user } = req.session
-    console.log('req.session')
-    console.log(req.session)
-    if(user) return res.status(200).send({loggedIn: true, user});
-    else return res.sendStatus(401);
+      console.log("req.session")
+      console.log(req.session)
+    if (user) return res.status(200).send({ loggedIn: true, user });
+    else return res.sendStatus(401)
   }
 
 }
-
