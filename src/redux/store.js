@@ -5,7 +5,7 @@ import userReducer from './userReducer';
 
 const rootReducer = combineReducers({
   products: productsReducer,
-  user: userReducer
+  authenticatedUser: userReducer
 })
 
 export default createStore(rootReducer, applyMiddleware(promiseMiddleware));

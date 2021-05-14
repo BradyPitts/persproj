@@ -1,13 +1,68 @@
 import axios from 'axios';
 const initialState = {
-  product_list:{}
+  productList:[],
+  cart:[],
+  wishList:[]
 
 }
 
 const GET_PRODUCT_LIST = 'GET_PRODUCT_LIST'
+const ADD_PRODUCT = 'ADD_PRODUCT'
+const ADD_TO_CART = 'ADD_TO_CART'
 
-export const addToCart = (product_id) =>{
+
+export const getProductList = () =>{
+  console.log('getProductList envoked')
+  let data = axios.get('/api/products')
+  .then(res => res.data)
+  .catch(err => console.log(err))
+  console.log(data);
+  return{
+    type: GET_PRODUCT_LIST,
+    payload: data
+  }
+}
+
+export const getCartList = () =>{
+  console.log('getProductList envoked')
+  let data = axios.get('/api/cart')
+  .then(res => res.data)
+  .catch(err => console.log(err))
+  console.log(data);
+  return{
+    type: GET_PRODUCT_LIST,
+    payload: data
+  }
+}
+
+
+export const addProduct = (product_name, product_number, description, product_image, price, stock_number, in_stock) => {
+  let data = axios.post('/api/products', {
+    product_name,
+    product_number,
+    description,
+    product_image,
+    price,
+    stock_number,
+    in_stock
+  })
+  .then(res => res.data)
+  return{
+    type: ADD_PRODUCT,
+    payload: data
+  }
+}
+
+
+export const addToCart = (user_id, product_id) =>{
   console.log(`product added to cart`)
+  let data = axios.post('/api/products', {user_id, product_id})
+  .then(res => res.data)
+  .catch(err => console.log(err));
+  return{
+    type: ADD_TO_CART,
+    payload: data
+  }
 }
 
 export const addToWishlist = () =>{
@@ -35,15 +90,31 @@ export const saveCartToWishlist = () =>{
   
 }
 
-export const getProductList = () =>{
-  console.log(`product list produced`)
-  
-}
 
 
 export default function reducer(state = initialState, action) {
+  console.log(action)
   switch(action.type){
 
-      default: return state;
+    case GET_PRODUCT_LIST + "_PENDING":
+      console.log('get pending')
+      return {...state};
+
+      case GET_PRODUCT_LIST + "_FULFILLED":
+        console.log('get fulfilled')
+        // console.log(action.payload);
+        return{...state, productList: action.payload};
+
+        case ADD_TO_CART + "_PENDING":
+          console.log('add to cart pending')
+          return {...state};
+    
+          case ADD_TO_CART + "_FULFILLED":
+            console.log('add to cart fulfilled')
+            // console.log(action.payload);
+            return{...state, productList: action.payload};
+
+    default:
+        return state;
   }
 }

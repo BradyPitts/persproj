@@ -1,10 +1,9 @@
 import axios from 'axios';
 
 const initialState = {
-  email: '',
-  password: '',
+  email: null,
+  password: null,
   admin: false
-
 }
 
 const REQUEST_USER_DATA = 'REQUEST_USER_DATA'
@@ -19,14 +18,16 @@ export const requestUserData = () =>{
   }
 }
 
-export const signUp = () => {
+
+export const signUp = (credentials) => {
   console.log('signUp pressed')
-  const {email, password, admin} = this.state;
+  const email = credentials.email;
+  const password = credentials.password;
+  const admin = credentials.admin;
   axios.post('/auth/signup', {email, password, admin})
   .then(res =>{
     console.log('signUp response')
     console.log(res.data)
-    this.setState({email: '', password: ''})
 
   })
   .catch(err => {
@@ -35,15 +36,15 @@ export const signUp = () => {
   })
 };
 
-export const login = () => {
+
+export const login = (credentials) => {
   console.log(`login pressed`)
-  const {email, password} = this.state;
+  const email = credentials.email;
+  const password = credentials.password;
   axios.post('/auth/login', {email, password})
   .then(res =>{
     console.log('login response')
     console.log(res.data)
-    this.setState({email: '', password: ''})
-
   })
   .catch(err => {
     alert(`a login error has occured ${err}`);
@@ -51,10 +52,12 @@ export const login = () => {
   })
 };
 
+
 export const logout = () => {
   console.log('logout pressed')
   axios.delete('/auth/logout');
 };
+
 
 export const continueAsGuest = () => {
   console.log(`continue pressed`)
@@ -65,9 +68,12 @@ export const continueAsGuest = () => {
 export default function reducer(state = initialState, action){
   switch(action.type){
     case REQUEST_USER_DATA + "_FULLFILLED":
-      const {user_id, email} = action.payload.user
+      console.log(action.payload.user)
+      const {user_id, email} = action.payload.authenticatedUser
       return {user_id, email};
+
     default:
-    return state
+    // console.log(state)
+      return state
   }
 }

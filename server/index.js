@@ -28,7 +28,7 @@ app.use(
     saveUninitialized: false,
     secret: SESSION_SECRET,
     cookie:{
-      maxAge: 1000* 60 * 20
+      maxAge: 1000* 60 * 60 * 7
     },
   })
 );
@@ -36,9 +36,11 @@ app.use(
 
 app.post('/auth/signup', authController.signUp);
 app.post('/auth/login', authController.login);
-app.delete('/auth/logout', authController.logout)
+app.delete('/auth/logout', authController.logout);
 
-app.get('api/products')
+app.get('/api/products', productController.getAll);
+app.post('/api/products', productController.addToCart);
+app.get('/api/cart', productController.getAllFromCart);
 
 
 

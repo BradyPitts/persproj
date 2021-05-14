@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import {signUp, login, logout, continueAsGuest, requestUserData} from '../../redux/userReducer';
 
 
-class Header extends Component{
+class Login extends Component{
 
 
   componentDidMount(){
@@ -34,6 +34,7 @@ class Header extends Component{
       <header>
         
 
+        
       <input
         type="email"
         placeholder="Email"
@@ -52,7 +53,7 @@ class Header extends Component{
       <button onClick={() => signUp(this.state)}>Sign Up</button>
       <br />
         <button onClick={() => (this.props.continueAsGuest())}>Continue As Guest</button>
-        
+
       </header>
     </div>
     );
@@ -67,4 +68,4 @@ function mapStateToProps(state){
   }
 }
 
-export default connect(mapStateToProps, {signUp, login, logout, continueAsGuest, requestUserData}) (Header);
+export default connect(mapStateToProps, {signUp, login, logout, continueAsGuest, requestUserData}) (Login);

@@ -1,22 +1,21 @@
-import React from 'react';
+import React ,{Component} from 'react';
 import {connect} from 'react-redux';
 import {addToCart, addToWishlist, removeFromCart, removeFromWishlist, saveCartToWishlist, checkout, getProductList} from '../../redux/productsReducer';
+import ProductItem from '../ProductItem/ProductItem';
 
 class Shop extends Component{
-  constructor(){
-    super();
 
-  }
 
   componentDidMount(){
-    getProductList();
+    // this.props.getProductList();
   }
-  
+
   render(){
-    const 
+    // const display = this.props.products.map;
     return(
       <div id='shop'>
-
+        <p>shop</p>
+        <ProductItem />
       </div>
     );
   }
