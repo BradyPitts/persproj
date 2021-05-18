@@ -35,7 +35,7 @@ class Login extends Component {
     render() {
         return (
             <Background>
-                <img src='./images/newbanner.jpg' alt='Wimpitts Banner' />
+                {/* <img src='./images/newbanner.jpg' alt='Wimpitts Banner' /> */}
                 <form className='login-form' onSubmit={(e) => this.login(e)}>
                     <div className="form-group">
                         <label>Email</label>

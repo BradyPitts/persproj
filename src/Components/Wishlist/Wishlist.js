@@ -2,7 +2,7 @@ import React ,{Component} from 'react';
 import {connect} from 'react-redux';
 import {addToWishlist, removeFromCart, saveCartToWishlist, checkout, getCartList} from '../../redux/productsReducer';
 
-class Cart extends Component{
+class Wishlist extends Component{
   constructor(){
     super();
 
@@ -61,4 +61,4 @@ function mapStateToProps(state){
   }
 }
 
-export default connect(mapStateToProps, {addToWishlist, removeFromCart, saveCartToWishlist, checkout, getCartList}) (Cart)
+export default connect(mapStateToProps, {addToWishlist, removeFromCart, saveCartToWishlist, checkout, getCartList}) (Wishlist);

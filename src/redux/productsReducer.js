@@ -2,13 +2,16 @@ import axios from 'axios';
 const initialState = {
   productList:[],
   cart:[],
-  wishList:[]
+  cartDisplay:[],
+  wishList:[],
+  wishlistDisplay:[]
 
 }
 
 const GET_PRODUCT_LIST = 'GET_PRODUCT_LIST'
 const ADD_PRODUCT = 'ADD_PRODUCT'
 const ADD_TO_CART = 'ADD_TO_CART'
+const GET_CART_LIST = 'GET_CART_LIST'
 
 
 export const getProductList = () =>{
@@ -115,6 +118,15 @@ export default function reducer(state = initialState, action) {
             console.log('add to cart fulfilled')
             // console.log(action.payload);
             return{...state, cart: action.payload};
+
+            case GET_CART_LIST + "_PENDING":
+              console.log('get pending')
+              return {...state};
+        
+              case GET_CART_LIST + "_FULFILLED":
+                console.log('get fulfilled')
+                // console.log(action.payload);
+                return{...state, cartDisplay: action.payload};
 
     default:
         return state;

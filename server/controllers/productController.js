@@ -9,11 +9,11 @@ module.exports = {
   },
 
   getAllFromCart: async (req,res) => {
-    console.log('getAll server ping')
-    const foundProduct = await req.app.get('db').get_cart();
-    console.log('returning data:')
-    console.log(foundProduct)
-    return res.status(200).send(foundProduct);
+    console.log('getCart server ping')
+    const foundCart = await req.app.get('db').get_cart();
+    console.log('returning cart:')
+    console.log(foundCart)
+    return res.status(200).send(foundCart);
   },
 
 
