@@ -1,6 +1,7 @@
 import React ,{Component} from 'react';
 import {connect} from 'react-redux';
 import {addToWishlist, removeFromCart, saveCartToWishlist, checkout, getCartList} from '../../redux/productsReducer';
+import Header from '../Header/Header';
 
 class Cart extends Component{
   constructor(){
@@ -9,7 +10,7 @@ class Cart extends Component{
   }
 
   componentDidMount(){
-    this.props.getCartList();
+    this.props.getAllFromCart(this.props.user_id);
     // const {productList} = this.state.products
   }
 
@@ -29,6 +30,7 @@ class Cart extends Component{
   
   render(){
     const {cartList} = this.props.cart;
+    console.log(cartList);
     const display = cartList.map((products) =>(
       <div>
         <ul>
@@ -45,6 +47,8 @@ class Cart extends Component{
     return(
       <div id='cart'>
 
+        <Header />
+
         <h3>Cart</h3>
         
         {display}
@@ -56,6 +60,7 @@ class Cart extends Component{
 
 function mapStateToProps(state){
   return {
+    user: state.user,
     products: state.products
     
   }

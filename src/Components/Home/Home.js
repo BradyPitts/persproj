@@ -18,7 +18,7 @@ class Home extends Component {
             <HashRouter>
 
             <div id='Home' >
-                <img id='banner' src='./images/newbanner.jpg' alt='Wimpitts Banner' />
+                <img id='banner' src='https://scontent-den4-1.xx.fbcdn.net/v/t1.6435-9/187899483_1136396016787280_4543918771449303346_n.jpg?_nc_cat=101&ccb=1-3&_nc_sid=e3f864&_nc_ohc=01J0pOA5HfkAX_2Xli9&_nc_ht=scontent-den4-1.xx&oh=68ada5837e1e7fcd1f601987eb4fc3e5&oe=60C930FA' alt='Wimpitts Banner' />
                 <Header />
 
                 <Link to='/Shop' className='links'>

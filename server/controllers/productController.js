@@ -16,6 +16,12 @@ module.exports = {
     return res.status(200).send(foundCart);
   },
 
+  getCartNumber: async (req,res) =>{
+    console.log('cart number server ping');
+    const cartNumber = await req.app.get('db').get_cart_number([user_id]);
+    return res.status(200).send(cartNumber);
+  },
+
 
   addProduct: async (req,res) =>{
     const {product_name, product_number, description, product_image, price, stock_number, in_stock} = req.body;

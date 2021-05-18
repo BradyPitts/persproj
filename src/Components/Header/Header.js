@@ -3,11 +3,16 @@ import {Link} from 'react-router-dom';
 import {HashRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {signUp, login, logout, continueAsGuest, requestUserData} from '../../redux/userReducer';
+import {getCartNumber} from '../../redux/productsReducer';
 import Login from '../Login/Login';
 import About from '../About/About';
 
 
-export default class Header extends Component{
+class Header extends Component{
+
+  // componentDidMount(){
+  //   getCartNumber(user_id);
+  // }
 
   render(){
     return(
@@ -24,3 +29,13 @@ export default class Header extends Component{
     )
   }
 }
+
+
+function mapStateToProps(state){
+  return {
+    user: state.user,
+    products: state.products
+  }
+}
+
+export default connect(mapStateToProps, {getCartNumber}) (Header)

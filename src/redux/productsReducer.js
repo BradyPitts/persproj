@@ -4,7 +4,8 @@ const initialState = {
   cart:[],
   cartDisplay:[],
   wishList:[],
-  wishlistDisplay:[]
+  wishlistDisplay:[],
+  cartNumber:null
 
 }
 
@@ -12,6 +13,7 @@ const GET_PRODUCT_LIST = 'GET_PRODUCT_LIST'
 const ADD_PRODUCT = 'ADD_PRODUCT'
 const ADD_TO_CART = 'ADD_TO_CART'
 const GET_CART_LIST = 'GET_CART_LIST'
+const GET_CART_NUM = 'GET_CART_NUM'
 
 
 export const getProductList = () =>{
@@ -35,6 +37,17 @@ export const getCartList = () =>{
   return{
     type: GET_PRODUCT_LIST,
     payload: data
+  }
+}
+
+export const getCartNumber = (user_id) =>{
+  console.log('cart num envok');
+  let number = axios.get('/api/number')
+  .then(res => res.data)
+  .catch(err => console.log(err))
+  return{
+    type: GET_CART_NUM,
+    payload: number
   }
 }
 
@@ -127,6 +140,15 @@ export default function reducer(state = initialState, action) {
                 console.log('get fulfilled')
                 // console.log(action.payload);
                 return{...state, cartDisplay: action.payload};
+
+                case GET_CART_NUM + "_PENDING":
+                  console.log('get pending')
+                  return {...state};
+            
+                  case GET_CART_NUM + "_FULFILLED":
+                    console.log('get fulfilled')
+                    // console.log(action.payload);
+                    return{...state, cartNumber: action.payload};
 
     default:
         return state;
