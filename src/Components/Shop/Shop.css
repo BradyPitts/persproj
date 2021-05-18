@@ -1,0 +1,25 @@
+#shop{
+  background-color: lightcoral;
+  width: 100vw;
+  display: flex;
+  flex-wrap:wrap;
+}
+
+h1{
+  display:flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100vw;
+}
+
+/* section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5vw;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+  border: dodgerblue;
+  background-color: lightgoldenrodyellow;
+  width:35vw;
+} */

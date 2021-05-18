@@ -2,6 +2,7 @@ import React ,{Component} from 'react';
 import {connect} from 'react-redux';
 import {addToCart, addToWishlist, removeFromCart, removeFromWishlist, saveCartToWishlist, checkout, getProductList} from '../../redux/productsReducer';
 import ProductItem from '../ProductItem/ProductItem';
+import './Shop.css'
 
 class Shop extends Component{
 
@@ -14,8 +15,8 @@ class Shop extends Component{
     // const display = this.props.products.map;
     return(
       <div id='shop'>
-        <p>shop</p>
-        <ProductItem />
+        <h1>shop</h1>
+          <ProductItem />
       </div>
     );
   }

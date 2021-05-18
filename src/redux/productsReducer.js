@@ -24,7 +24,7 @@ export const getProductList = () =>{
 }
 
 export const getCartList = () =>{
-  console.log('getProductList envoked')
+  console.log('getCartList envoked')
   let data = axios.get('/api/cart')
   .then(res => res.data)
   .catch(err => console.log(err))
@@ -55,10 +55,12 @@ export const addProduct = (product_name, product_number, description, product_im
 
 
 export const addToCart = (user_id, product_id) =>{
-  console.log(`product added to cart`)
+  console.log(`add to cart envoked`)
   let data = axios.post('/api/products', {user_id, product_id})
   .then(res => res.data)
   .catch(err => console.log(err));
+  console.log('response recieved')
+  console.log(data)
   return{
     type: ADD_TO_CART,
     payload: data

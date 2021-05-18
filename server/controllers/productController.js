@@ -11,7 +11,7 @@ module.exports = {
   getAllFromCart: async (req,res) => {
     console.log('getAll server ping')
     const foundProduct = await req.app.get('db').get_cart();
-    console.log('retunrning data:')
+    console.log('returning data:')
     console.log(foundProduct)
     return res.status(200).send(foundProduct);
   },
@@ -28,8 +28,10 @@ module.exports = {
   addToCart: async (req,res) =>{
     console.log('add to cart server ping')
     const {user_id, product_id} = req.body;
-    const foundCart = await req.app.post('db').add_to_cart([user_id, product_id]);
-
+    const foundCart = await req.app.get('db').add_to_cart([user_id, product_id]);
+    console.log('returning cart data')
+    console.log(foundCart);
+    return res.status(201).send({foundCart});
 
   },
 

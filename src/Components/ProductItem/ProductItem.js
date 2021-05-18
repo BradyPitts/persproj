@@ -1,51 +1,41 @@
 import React ,{Component} from 'react';
 import {connect} from 'react-redux';
-import {addToCart, addToWishlist, removeFromCart, removeFromWishlist, saveCartToWishlist, checkout, getProductList} from '../../redux/productsReducer';
+import {addToCart, getProductList} from '../../redux/productsReducer';
+import './ProductItem.css';
 
 class ProductItem extends Component{
-  constructor(){
-    super();
-
-  }
+ 
 
   componentDidMount(){
     this.props.getProductList();
-    // const {productList} = this.state.products
+    // this.props.requsetUserData();
   }
 
-  // const saleList = props.carsList.map((carsList, i ) => (
-  //   <Car 
-  //     key={i}
-  //     carId={carsList.id}
-  //     img={carsList.img}
-  //     name={carsList.name}
-  //     make={carsList.make}
-  //     model={carsList.model}
-  //     year={carsList.year}
-  //     price={carsList.price}
-  //     buyCarFn = {props.buyCarFn}
-  //   />
-  // ));
   
   render(){
     const {productList} = this.props.products;
+    console.log('user data');
+    console.log(this.props.user);
     const display = productList.map((products) =>(
-      <div>
+      <div className='item-display'>
+        <img src={products.product_image}  alt={products.product_number}/>
         <ul>
           <li>{products.product_name}</li>
           <li>{products.product_number}</li>
-          <li>{products.description}</li>
-          <li>{products.price}</li>
+          <li>{products.description} * Baby Not Included</li>
+          <li>${products.price}</li>
           <li>stock: {products.stock_number}</li>
           <li>{products.in_stock}</li>
         </ul>
-        <button onClick={() => (this.props.addToCart(this.props.user_id, products.product_id))} >Add to Cart</button>
+        <button onClick={() => this.props.addToCart(this.props.user.user_id, products.product_id)} >Add to Cart</button>
       </div>
     ))
     return(
-      <div id='shop'>
+      <div id='product-arangement'>
 
         <h3>products</h3>
+
+        {/* <Link>View Cart</Link> */}
         
         {display}
         
@@ -56,9 +46,10 @@ class ProductItem extends Component{
 
 function mapStateToProps(state){
   return {
-    products: state.products
+    products: state.products,
+    user: state.user
     
   }
 }
 
-export default connect(mapStateToProps, {addToCart, addToWishlist, removeFromCart, removeFromWishlist, saveCartToWishlist, checkout, getProductList}) (ProductItem)
+export default connect(mapStateToProps, {addToCart, getProductList}) (ProductItem)
