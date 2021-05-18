@@ -16,6 +16,8 @@ class ProductItem extends Component{
     const {productList} = this.props.products;
     console.log('user data');
     console.log(this.props.user);
+    console.log('product data');
+    console.log(productList);
     const display = productList.map((products) =>(
       <div className='item-display'>
         <img src={products.product_image}  alt={products.product_number}/>

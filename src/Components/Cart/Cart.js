@@ -28,8 +28,8 @@ class Cart extends Component{
   // ));
   
   render(){
-    const {productList} = this.props.products;
-    const display = productList.map((products) =>(
+    const {cartList} = this.props.cart;
+    const display = cartList.map((products) =>(
       <div>
         <ul>
           <li>{products.product_name}</li>
@@ -39,7 +39,7 @@ class Cart extends Component{
           <li>{products.stock_number}</li>
           <li>{products.in_stock}</li>
         </ul>
-        <button onClick={() => (this.props.addToCart())} >Add to Cart</button>
+        <button onClick={() => (this.props.removeFromCart())} >Add to Cart</button>
       </div>
     ))
     return(

@@ -114,7 +114,7 @@ export default function reducer(state = initialState, action) {
           case ADD_TO_CART + "_FULFILLED":
             console.log('add to cart fulfilled')
             // console.log(action.payload);
-            return{...state, productList: action.payload};
+            return{...state, cart: action.payload};
 
     default:
         return state;
