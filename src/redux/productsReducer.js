@@ -89,12 +89,23 @@ export const addToWishlist = () =>{
 
 }
 
-export const removeFromCart = (id) =>{
+export const removeFromCart = (id, key, cartList) =>{
   console.log(`product removed from cart`)
-  axios.delete('/api/cart', {id})
+  axios.post('/api/cartRemove', {id})
   .then(res => res.data)
   .catch(err => alert(`removal error: ${err}`))
-  getCartList(this.state.user_id);
+  // getCartList(this.state.user_id);
+  // console.log(this.state)  
+  // console.log(this.props)
+  console.log(cartList)
+  const cart = cartList.splice(key,1);
+  console.log(cartList)
+  // const data = {cart};
+  console.log(cart)
+  return{
+    type: REMOVE_CART,
+    payload: cartList
+  }
   
 }
 
@@ -115,7 +126,7 @@ export const saveCartToWishlist = () =>{
 
 
 export default function reducer(state = initialState, action) {
-  console.log(action)
+  console.log(action.type)
   switch(action.type){
 
     case GET_PRODUCT_LIST + "_PENDING":
@@ -155,9 +166,20 @@ export default function reducer(state = initialState, action) {
                     // console.log(action.payload);
                     return{...state, cartNumber: action.payload};
 
-                    // case REMOVE_CART + "_FULFILLED" :
-                    //   console.log('remove fulfilled')
-                    //   return{...state, cartDisplay:action.payload}
+                    case REMOVE_CART + "_PENDING" :
+                    console.log('remove pending')
+                    console.log(action.payload)
+                    return{...state}
+
+                    case REMOVE_CART + "_FULFILLED" :
+                      console.log('remove fulfilled')
+                      console.log(action.payload)
+                      return{...state, cartDisplay: action.payload}
+
+                      case REMOVE_CART :
+                      console.log('we cheated')
+                      console.log(action.payload)
+                      return{...state, cartDisplay: action.payload}
 
     default:
         return state;

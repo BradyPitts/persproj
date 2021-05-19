@@ -17,8 +17,8 @@ module.exports ={
     const registeredUser = await db.sign_up_user([email, hash, admin]);
     console.log(registeredUser)
     const user = registeredUser[0];
-    req.session.user = {user};
-    return res.status(201).send({isLoggedIn: true});
+    // req.session.user = {isAdmin: user.admin, email: user.email, id: user.user_id};
+    return res.status(201).send({isLoggedIn: true, user});
   },
 
 
@@ -35,15 +35,13 @@ module.exports ={
     if (!isAuthenticated){
       return res.status(403).send('Wrong password');
     }
-    req.session.user = user;
-    return res.status(200).send({isLoggedIn: true});
+    // req.session.user = {isAdmin:user.admin, id: user.user_id,};
+    return res.status(200).send({isLoggedIn: true, user});
   },
 
   
   logout: (req,res) =>{
-    console.log(req.session.user)
     req.session.destroy();
-    console.log(req.session.user)
     return res.sendStatus(200).send({isLoggedIn: false});
   },
 

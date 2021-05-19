@@ -42,7 +42,7 @@ app.get('/auth/user-data', authController.userData);
 app.get('/api/products', productController.getAll);
 app.post('/api/products', productController.addToCart);
 app.post('/api/cart', productController.getAllFromCart);
-app.delete('/api/cart', productController.removeFromCart);
+app.post('/api/cartRemove', productController.removeFromCart);
 // app.get('/api/number', productController.getCartNumber);
 // app.get('/api/wishlist', productController.getWishlist);
 // app.post('/api/wishlist', productController.addToWishlist);

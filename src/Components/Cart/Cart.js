@@ -31,8 +31,8 @@ class Cart extends Component{
   render(){
     console.log(this.props.products.cartDisplay)
     const cartList = this.props.products.cartDisplay;
-    // console.log(cartList);
-    const display = cartList.map((products) =>(
+    console.log(cartList);
+    const display = cartList.map((products, key) =>(
       <div className='item-display'>
         <img src={products.product_image} />
         <ul>
@@ -43,7 +43,7 @@ class Cart extends Component{
           <li>{products.stock_number}</li>
           <li>{products.in_stock}</li>
         </ul>
-        <button onClick={() => (this.props.removeFromCart(products.cart_id))} >Remove From Cart</button>
+        <button onClick={() => (this.props.removeFromCart(products.cart_id, key, cartList))} >Remove From Cart</button>
       </div>
     ))
     return(
