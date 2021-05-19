@@ -14,6 +14,7 @@ const ADD_PRODUCT = 'ADD_PRODUCT'
 const ADD_TO_CART = 'ADD_TO_CART'
 const GET_CART_LIST = 'GET_CART_LIST'
 const GET_CART_NUM = 'GET_CART_NUM'
+const REMOVE_CART = 'REMOVE_CART'
 
 
 export const getProductList = () =>{
@@ -28,14 +29,14 @@ export const getProductList = () =>{
   }
 }
 
-export const getCartList = () =>{
+export const getCartList = (id) =>{
   console.log('getCartList envoked')
-  let data = axios.get('/api/cart')
+  const data = axios.post('/api/cart', {id})
   .then(res => res.data)
   .catch(err => console.log(err))
   console.log(data);
   return{
-    type: GET_PRODUCT_LIST,
+    type: GET_CART_LIST,
     payload: data
   }
 }
@@ -88,14 +89,17 @@ export const addToWishlist = () =>{
 
 }
 
-export const removeFromCart = () =>{
+export const removeFromCart = (id) =>{
   console.log(`product removed from cart`)
+  axios.delete('/api/cart', {id})
+  .then(res => res.data)
+  .catch(err => alert(`removal error: ${err}`))
+  getCartList(this.state.user_id);
   
 }
 
 export const removeFromWishlist = () =>{
   console.log(`product removed from wishlist`)
-  
 }
 
 export const checkout = () =>{
@@ -119,7 +123,7 @@ export default function reducer(state = initialState, action) {
       return {...state};
 
       case GET_PRODUCT_LIST + "_FULFILLED":
-        console.log('get fulfilled')
+        console.log('get products fulfilled')
         // console.log(action.payload);
         return{...state, productList: action.payload};
 
@@ -137,7 +141,8 @@ export default function reducer(state = initialState, action) {
               return {...state};
         
               case GET_CART_LIST + "_FULFILLED":
-                console.log('get fulfilled')
+                console.log('get cart fulfilled')
+                console.log(action.payload)
                 // console.log(action.payload);
                 return{...state, cartDisplay: action.payload};
 
@@ -149,6 +154,10 @@ export default function reducer(state = initialState, action) {
                     console.log('get fulfilled')
                     // console.log(action.payload);
                     return{...state, cartNumber: action.payload};
+
+                    // case REMOVE_CART + "_FULFILLED" :
+                    //   console.log('remove fulfilled')
+                    //   return{...state, cartDisplay:action.payload}
 
     default:
         return state;

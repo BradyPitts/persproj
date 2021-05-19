@@ -10,15 +10,15 @@ module.exports ={
     const result = await db.get_user([email]);
     const existingUser = result[0];
     if (existingUser){
-      return res.status(409).send(`Account already exists with eamil ${email}`);
+      return res.status(409).send(`Account already exists with email: ${email}`);
     };
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(password,salt);
     const registeredUser = await db.sign_up_user([email, hash, admin]);
     console.log(registeredUser)
     const user = registeredUser[0];
-    req.session.user = {isAdmin: user.admin, email: user.email, id: user.user_id};
-    return res.status(201).send({loggedIn: true, authenticatedUser});
+    req.session.user = {user};
+    return res.status(201).send({isLoggedIn: true});
   },
 
 
@@ -35,14 +35,16 @@ module.exports ={
     if (!isAuthenticated){
       return res.status(403).send('Wrong password');
     }
-    // req.session.user = {isAdmin:user.admin, id: user.user_id,};
-    return res.status(200).send({foundUser});
+    req.session.user = user;
+    return res.status(200).send({isLoggedIn: true});
   },
 
   
   logout: (req,res) =>{
+    console.log(req.session.user)
     req.session.destroy();
-    return res.sendStatus(200);
+    console.log(req.session.user)
+    return res.sendStatus(200).send({isLoggedIn: false});
   },
 
   userData: async (req,res) =>{

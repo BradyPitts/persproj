@@ -4,7 +4,8 @@ const initialState = {
   user_id: null,
   email: '',
   password: '',
-  admin: false
+  admin: false,
+  isLoggedIn: false
   
 }
 
@@ -31,11 +32,8 @@ export const signUp = (email, password, admin) => {
   // const email = credentials.email;
   // const password = credentials.password;
   // const admin = credentials.admin;
-  const userData = axios.post('/auth/signup', {email, password, admin})
-  .then(res =>{
-    console.log('signUp response')
-    console.log(res.data)
-  })
+  let userData = axios.post('/auth/signup', {email, password, admin})
+  .then(res => res.data)
   .catch(err => {
     alert(`a sign up error has occured ${err}`);
     console.log(err)
@@ -62,7 +60,11 @@ export const login = (email, password) => {
 
 export const logout = () => {
   console.log('logout pressed')
-  axios.delete('/auth/logout');
+  const userData = axios.delete('/auth/logout');
+  return{
+    type: LOGOUT_USER,
+    payload: userData
+  }
 };
 
 
@@ -79,14 +81,15 @@ export default function reducer(state = initialState, action){
       return {...state, user: action.payload};
 
       case REGISTER_USER + "_FULFILLED":
-        return{...state, state:action.payload}
+        console.log(action.payload)
+        return{...state, user_id:action.payload.user.user_id, admin:action.payload.user.admin, isLoggedIn:action.payload.isLoggedIn}
 
       case LOGIN_USER + "_FULFILLED":
         console.log(action.payload)
-        return{...state, user_id:action.payload.user_id, admin:action.payload.admin}
+        return{...state, isLoggedIn:action.payload.isLoggedIn}
 
         case LOGOUT_USER + "_FULFILLED":
-          return{initialState}
+          return{state:initialState}
 
     default:
     // console.log(state)

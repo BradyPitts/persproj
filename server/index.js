@@ -28,7 +28,7 @@ app.use(
     saveUninitialized: false,
     secret: SESSION_SECRET,
     cookie:{
-      maxAge: 1000* 60 * 60 * 24 * 7
+      maxAge: 1000* 60 * 60 * 24 * 7 * 4
     },
   })
 );
@@ -41,8 +41,9 @@ app.get('/auth/user-data', authController.userData);
 
 app.get('/api/products', productController.getAll);
 app.post('/api/products', productController.addToCart);
-app.get('/api/cart', productController.getAllFromCart);
-app.get('/api/number', productController.getCartNumber);
+app.post('/api/cart', productController.getAllFromCart);
+app.delete('/api/cart', productController.removeFromCart);
+// app.get('/api/number', productController.getCartNumber);
 // app.get('/api/wishlist', productController.getWishlist);
 // app.post('/api/wishlist', productController.addToWishlist);
 
