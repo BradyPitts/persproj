@@ -5,7 +5,8 @@ const initialState = {
   cartDisplay:[],
   wishList:[],
   wishlistDisplay:[],
-  cartNumber:null
+  cartNumber:null,
+  totalPrice: 0
 
 }
 
@@ -15,6 +16,7 @@ const ADD_TO_CART = 'ADD_TO_CART'
 const GET_CART_LIST = 'GET_CART_LIST'
 const GET_CART_NUM = 'GET_CART_NUM'
 const REMOVE_CART = 'REMOVE_CART'
+const CHECKOUT = 'CHECKOUT'
 
 
 export const getProductList = () =>{
@@ -54,7 +56,8 @@ export const getCartNumber = (user_id) =>{
 
 
 export const addProduct = (product_name, product_number, description, product_image, price, stock_number, in_stock) => {
-  let data = axios.post('/api/products', {
+  console.log(product_name)
+  const data = axios.put('/api/products', {
     product_name,
     product_number,
     description,
@@ -64,6 +67,7 @@ export const addProduct = (product_name, product_number, description, product_im
     in_stock
   })
   .then(res => res.data)
+  .catch(err => console.log(err))
   return{
     type: ADD_PRODUCT,
     payload: data
@@ -113,8 +117,17 @@ export const removeFromWishlist = () =>{
   console.log(`product removed from wishlist`)
 }
 
-export const checkout = () =>{
+export const checkout = (id) =>{
   console.log(`product purchased`)
+  console.log(id)
+  axios.post('/api/checkout', {id})
+  .then(res => res.data)
+  .catch(err => console.log(err))
+  const cartList = []
+  return{
+    type: CHECKOUT,
+    payload: cartList
+  }
   
 }
 
@@ -166,20 +179,41 @@ export default function reducer(state = initialState, action) {
                     // console.log(action.payload);
                     return{...state, cartNumber: action.payload};
 
-                    case REMOVE_CART + "_PENDING" :
-                    console.log('remove pending')
-                    console.log(action.payload)
-                    return{...state}
+                    // case REMOVE_CART + "_PENDING" :
+                    // console.log('remove pending')
+                    // console.log(action.payload)
+                    // return{...state}
 
-                    case REMOVE_CART + "_FULFILLED" :
-                      console.log('remove fulfilled')
-                      console.log(action.payload)
-                      return{...state, cartDisplay: action.payload}
+                    // case REMOVE_CART + "_FULFILLED" :
+                    //   console.log('remove fulfilled')
+                    //   console.log(action.payload)
+                    //   return{...state, cartDisplay: action.payload}
 
                       case REMOVE_CART :
                       console.log('we cheated')
                       console.log(action.payload)
                       return{...state, cartDisplay: action.payload}
+
+                      // case CHECKOUT + "_PENDING" :
+                      //   console.log('checkout pending')
+                      //   console.log(action.payload)
+                      //   return{...state}
+    
+                        // case CHECKOUT + "_FULFILLED" :
+                        //   console.log('Checkout fulfilled')
+                        //   alert('checkout sucsessful')
+                        //   // console.log(action.payload)
+                        //   return{state: action.payload}
+
+                        case CHECKOUT :
+                          console.log('we cheated again')
+                          console.log(action.payload)
+                          alert('Purchase Sucessful')
+                          return{...state, cartDisplay: action.payload}
+
+                          case ADD_PRODUCT + 'FULFILLED':
+                            alert('ADD Sucessful')
+                            return{...state, cartDisplay: action.payload}
 
     default:
         return state;

@@ -18,7 +18,7 @@ class Shop extends Component{
       <div id='shop'>
         <Header />
         <h1>shop</h1>
-          <ProductItem />
+        <ProductItem />
       </div>
     );
   }

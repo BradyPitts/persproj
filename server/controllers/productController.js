@@ -27,7 +27,8 @@ module.exports = {
 
   addProduct: async (req,res) =>{
     const {product_name, product_number, description, product_image, price, stock_number, in_stock} = req.body;
-    const addProduct = await req.app.put('db').add_product([product_name, product_number, description, product_image, price, stock_number, in_stock])
+    console.log(product_name)
+    const addProduct = await req.app.get('db').add_product([product_name, product_number, description, product_image, price, stock_number, in_stock])
     console.log(addProduct)
     return res.status(200).send(req.session.product);
   },
@@ -65,7 +66,11 @@ module.exports = {
   },
 
   checkout: async (req,res) =>{
-
+    console.log('checkout server ping');
+    const {id} = req.body
+    console.log(id)
+    await req.app.get('db').checkout([id])
+    return res.status(200).send('checkout server complete')
   },
 
 

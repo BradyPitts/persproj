@@ -11,6 +11,10 @@ class Cart extends Component{
     console.log(this.props.user.user_id);
     this.props.getCartList(this.props.user.user_id);
     console.log(this.props.products.cartDisplay)
+    // const cartList = this.props.products.cartDisplay;
+    // const totalPriceFn = cartList.map((products)=>products.price).reduce((total, price) => total + price, 0)
+    // console.log(totalPriceFn)
+    // this.setState({totalPrice:totalPriceFn})
     // const {productList} = this.state.products
   }
 
@@ -30,7 +34,10 @@ class Cart extends Component{
   
   render(){
     console.log(this.props.products.cartDisplay)
+    console.log(this.props.products.totalPrice)
     const cartList = this.props.products.cartDisplay;
+    const totalPriceFn = cartList.map((products)=>products.price).reduce((total, price) => total + price, 0)
+    const totalPrice = totalPriceFn.toFixed(2);
     console.log(cartList);
     const display = cartList.map((products, key) =>(
       <div className='item-display'>
@@ -45,6 +52,7 @@ class Cart extends Component{
         </ul>
         <button onClick={() => (this.props.removeFromCart(products.cart_id, key, cartList))} >Remove From Cart</button>
       </div>
+      
     ))
     return(
       <div id='cart'>
@@ -53,7 +61,8 @@ class Cart extends Component{
 
         <h1>Cart</h1>
 
-        {this.props.user.isLoggedIn ? <div>{display}</div> : <h2>Log in to view cart</h2> }
+        {this.props.user.isLoggedIn ? <div><h3>Total Cart Price: ${totalPrice}</h3>
+        <button onClick={() => this.props.checkout(this.props.user.user_id)}>Checkout</button>{display}</div> : <h2>Log in to view cart</h2> }
         
         {/* {display} */}
         

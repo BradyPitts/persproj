@@ -43,6 +43,8 @@ app.get('/api/products', productController.getAll);
 app.post('/api/products', productController.addToCart);
 app.post('/api/cart', productController.getAllFromCart);
 app.post('/api/cartRemove', productController.removeFromCart);
+app.post('/api/checkout', productController.checkout);
+app.put('/api/products', productController.addProduct);
 // app.get('/api/number', productController.getCartNumber);
 // app.get('/api/wishlist', productController.getWishlist);
 // app.post('/api/wishlist', productController.addToWishlist);
