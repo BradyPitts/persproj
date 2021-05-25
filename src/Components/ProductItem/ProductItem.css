@@ -28,8 +28,9 @@
   }
   
   .item-display img{
-    width: 325px;
+    width: 90vw;
     border-radius: 14px;
+    margin:10px;
   }
   
   .item-display button{
