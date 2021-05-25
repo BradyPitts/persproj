@@ -6,6 +6,7 @@ import {signUp, login, logout, continueAsGuest, requestUserData} from '../../red
 import {getCartNumber} from '../../redux/productsReducer';
 import Login from '../Login/Login';
 import About from '../About/About';
+import './Header.css';
 
 
 class Header extends Component{
@@ -18,12 +19,14 @@ class Header extends Component{
     return(
       <div id='header'>
         <HashRouter>
+          
           <Link to='/' className='links'>Home</Link>
           <Link to='/Shop' className='links'>Shop</Link>
           <Link to='/About' className='links'>About Us</Link>
-          <Link to='/ContactUs' className='links'>Contact Us</Link>
-          <Login />
+          {/* <Link to='/ContactUs' className='links'>Contact Us</Link> */}
           <Link to='/Cart' className='links'>Cart</Link>
+         
+          <Login />
         </HashRouter>
       </div>
     )

@@ -2,9 +2,14 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  width: 100vw;
   }
   
+#visable button{
+  height:60px;
+  width:120px;
+  font-family: cursive;
+}
+
   h3{ 
     display: flex;
     justify-content: center;
@@ -17,7 +22,7 @@
     justify-content: space-evenly;
     align-items: center;
     margin: 2.5vw;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     box-sizing: border-box;
     border: dodgerblue solid 5px;
     border-radius: 20px;

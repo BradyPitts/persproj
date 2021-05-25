@@ -61,8 +61,8 @@ class Cart extends Component{
 
         <h1>Cart</h1>
 
-        {this.props.user.isLoggedIn ? <div><h3>Total Cart Price: ${totalPrice}</h3>
-        <button onClick={() => this.props.checkout(this.props.user.user_id)}>Checkout</button>{display}</div> : <h2>Log in to view cart</h2> }
+        {this.props.user.isLoggedIn ? <div id='visable'><h3>Total Cart Price: ${totalPrice}</h3>
+        <button id='checkout' onClick={() => this.props.checkout(this.props.user.user_id)}>Checkout</button>{display}</div> : <h2>Log in to view cart</h2> }
         
         {/* {display} */}
         

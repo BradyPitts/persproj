@@ -62,7 +62,7 @@ class ProductItem extends Component{
           <li>{products.description} * Baby Not Included</li>
           <li>${products.price}</li>
           <li>stock: {products.stock_number}</li>
-          <li>{products.in_stock}</li>
+          {/* <li>{products.in_stock}</li> */}
         </ul>
         <button onClick={() => this.props.addToCart(this.props.user.user_id, products.product_id)} >Add to Cart</button>
       </div>

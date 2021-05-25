@@ -17,7 +17,7 @@ class Shop extends Component{
     return(
       <div id='shop'>
         <Header />
-        <h1>shop</h1>
+        <h1>Shop</h1>
         <ProductItem />
       </div>
     );

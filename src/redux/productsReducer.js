@@ -57,7 +57,7 @@ export const getCartNumber = (user_id) =>{
 
 export const addProduct = (product_name, product_number, description, product_image, price, stock_number, in_stock) => {
   console.log(product_name)
-  const data = axios.put('/api/products', {
+  axios.put('/api/products', {
     product_name,
     product_number,
     description,
@@ -68,9 +68,10 @@ export const addProduct = (product_name, product_number, description, product_im
   })
   .then(res => res.data)
   .catch(err => console.log(err))
+  const newProduct = {product_name, product_number, description, product_image, price, stock_number, in_stock}
   return{
     type: ADD_PRODUCT,
-    payload: data
+    payload: this.cartDisplay.push(newProduct)
   }
 }
 

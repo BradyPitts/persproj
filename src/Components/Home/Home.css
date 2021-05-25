@@ -3,14 +3,57 @@
 }
 
 #banner{
-  height:100vh;
-  /* width:100vw; */
+  width:100vw;
 }
 
 #shopImg{
-  width: 35vw;
+  width: 90vw;
 }
 
 #aboutImg{
-  width:35vw;
+  width:90vw;
+}
+
+#links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content: space-around;
+  align-items: baseline;
+  margin:2vw;
+}
+
+#links h2{
+  display:none;
+}
+
+@media (min-width:1000px){
+  /* #banner{
+  height:100vh;
+  width:100%;
+  } */
+
+  #shopImg{
+    width: 45vw;
+  }
+
+  #aboutImg{
+    width:45vw;
+  }
+
+  #links{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-around;
+    align-items: baseline;
+    margin:2vw;
+  }
+
+  #links h1{
+    width:40vw;
+  }
+
+  #links h2{
+    display: contents;
+    width: 10vw;
+  }
 }

@@ -1,3 +1,33 @@
-/* img{
-  width: 100%;
-} */
+#login{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin:20px;
+}
+
+#login button{
+  height:60px;
+  width:120px;
+  margin:10px;
+}
+
+#login input{
+  height:60px;
+  margin:10px;
+}
+
+
+
+
+
+@media(min-width:800px){
+
+  #login button{
+    height:60px;
+    width:120px;
+  }
+
+  #login input{
+    height:35px;
+  }
+}
