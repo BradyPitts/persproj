@@ -5,6 +5,7 @@
 
 #banner{
   width:100vw;
+  height:55vw;
 }
 
 #shopImg{
@@ -32,10 +33,10 @@
 }
 
 @media (min-width:1000px){
-  /* #banner{
+  #banner{
   height:100vh;
-  width:100%;
-  } */
+  /* width:100%; */
+  }
 
   #shopImg{
     width: 45vw;

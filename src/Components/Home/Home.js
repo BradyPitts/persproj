@@ -18,7 +18,7 @@ class Home extends Component {
             <HashRouter>
 
             <div id='Home' >
-                <img id='banner' src='https://scontent-den4-1.xx.fbcdn.net/v/t1.6435-9/187899483_1136396016787280_4543918771449303346_n.jpg?_nc_cat=101&ccb=1-3&_nc_sid=e3f864&_nc_ohc=01J0pOA5HfkAX_2Xli9&_nc_ht=scontent-den4-1.xx&oh=68ada5837e1e7fcd1f601987eb4fc3e5&oe=60C930FA' alt='Wimpitts Banner' />
+                <img id='banner' src='https://scontent-lax3-1.xx.fbcdn.net/v/t1.6435-9/188162557_1136401500120065_7835355315055070718_n.jpg?_nc_cat=104&ccb=1-3&_nc_sid=0debeb&_nc_ohc=Xw8UrbmM9YkAX-ZUg45&tn=KnPIx8HPyDc3rGaz&_nc_ht=scontent-lax3-1.xx&oh=df9cacff6d85deaf08ee1f886f781702&oe=60DA9D3E' alt='Wimpitts Banner' />
 
                 <Header />
 
@@ -29,7 +29,7 @@ class Home extends Component {
                         </Link>
                         
                         <Link to='/Shop' className='links'>
-                            <img id='shopImg' src='https://scontent-den4-1.xx.fbcdn.net/v/t31.18172-8/21273700_331608357266054_688289904150058855_o.jpg?_nc_cat=105&ccb=1-3&_nc_sid=cdbe9c&_nc_ohc=ZngcXkXyJb0AX8t1vRt&_nc_ht=scontent-den4-1.xx&oh=d4433ce40a029c48689a4193304e3bb5&oe=60C8AEE1' alt='Link to Shop' />
+                            <img id='shopImg' src='https://scontent-lax3-1.xx.fbcdn.net/v/t31.18172-8/21273700_331608357266054_688289904150058855_o.jpg?_nc_cat=105&ccb=1-3&_nc_sid=cdbe9c&_nc_ohc=CqeYiYgmuR8AX8nhcb3&_nc_ht=scontent-lax3-1.xx&oh=b9fc0104480b53be2c92e1f83ae40ded&oe=60DA7B21' alt='Link to Shop' />
                         </Link>
                     </div>
 
@@ -41,7 +41,7 @@ class Home extends Component {
                         </Link>
 
                         <Link to='/About' className='links'>
-                            <img id='aboutImg' src='https://scontent-den4-1.xx.fbcdn.net/v/t31.18172-8/r270/21316099_331597667267123_5961621395707525658_o.jpg?_nc_cat=105&ccb=1-3&_nc_sid=cdbe9c&_nc_ohc=wVMOU4Y-kooAX9wARls&_nc_ht=scontent-den4-1.xx&_nc_tp=31&oh=924afa4e09f671d6c3e451730c52b389&oe=60C8CDFD' alt='Link to About Us' />
+                            <img id='aboutImg' src='https://scontent-lax3-2.xx.fbcdn.net/v/t31.18172-8/21368941_331598513933705_6579325986744054702_o.jpg?_nc_cat=106&ccb=1-3&_nc_sid=174925&_nc_ohc=TtZUphVsP_YAX_OXHsY&_nc_ht=scontent-lax3-2.xx&oh=df0facc45e0a7fcad5a450688aa8329e&oe=60DA8546' alt='Link to About Us' />
                         </Link>
                     </div>
                 </div>
