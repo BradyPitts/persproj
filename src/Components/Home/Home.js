@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Background from '../shared/Background/Background'
+// import Background from '../shared/Background/Background'
 import './Home.css';
 import {connect} from 'react-redux';
 import {requestUserData} from '../../redux/userReducer2';

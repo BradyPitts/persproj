@@ -9,13 +9,15 @@
 }
 
 #shopImg{
-  width: 85vw;
+  width: 65vw;
+  height:30vw;
   border-radius: 15px;
   margin:5vw;
 }
 
 #aboutImg{
-  width:85vw;
+  width:65vw;
+  height:30vw;
   border-radius: 15px;
   margin: 5vw;
 }
