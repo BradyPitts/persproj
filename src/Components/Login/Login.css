@@ -23,11 +23,11 @@
 @media(min-width:800px){
 
   #login button{
-    height:60px;
-    width:120px;
+    height:40px;
+    width:80px;
   }
 
   #login input{
-    height:35px;
+    height:25px;
   }
 }

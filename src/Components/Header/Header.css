@@ -3,6 +3,7 @@
   flex-wrap: wrap;
   justify-content: space-around;
   font-size: 175%;
+  width: 100vw;
 }
 
 .links{
