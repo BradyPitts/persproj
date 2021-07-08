@@ -2,10 +2,8 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {HashRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {signUp, login, logout, continueAsGuest, requestUserData} from '../../redux/userReducer';
 import {getCartNumber} from '../../redux/productsReducer';
 import Login from '../Login/Login';
-import About from '../About/About';
 import './Header.css';
 
 
