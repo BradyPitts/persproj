@@ -4,6 +4,7 @@ const session = require('express-session');
 const massive = require('massive');
 const authController = require('./controllers/authController');
 const productController = require('./controllers/productController');
+const path = require('path')
 
 
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env;
@@ -11,6 +12,8 @@ const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env;
 const app = express();
 
 app.use(express.json());
+
+app.use(express.static(`${__dirname}/../build`))
 
 massive({
   connectionString: CONNECTION_STRING,
@@ -32,6 +35,10 @@ app.use(
     },
   })
 );
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build/index.html'))
+})
 
 
 app.post('/auth/signup', authController.signUp);

@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 // import Background from '../shared/Background/Background'
 import './Home.css';
-import { connect } from 'react-redux';
-import { requestUserData } from '../../redux/userReducer2';
+import {connect} from 'react-redux';
+import {requestUserData} from '../../redux/userReducer2';
 // import {requestBudgetData, addPurchase, removePurchase} from '../../redux/budgetReducer';
 import Header from '../Header/Header';
-import { Link } from 'react-router-dom';
-import { HashRouter } from 'react-router-dom';
+import {Link} from 'react-router-dom';
+import {HashRouter} from 'react-router-dom';
 
 
 
