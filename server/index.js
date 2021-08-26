@@ -4,7 +4,7 @@ const session = require('express-session');
 const massive = require('massive');
 const authController = require('./controllers/authController');
 const productController = require('./controllers/productController');
-const path = require('path')
+const path = require('path');
 
 
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env;
@@ -36,9 +36,7 @@ app.use(
   })
 );
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../build/index.html'))
-})
+
 
 
 app.post('/auth/signup', authController.signUp);
@@ -57,5 +55,7 @@ app.put('/api/products', productController.addProduct);
 // app.post('/api/wishlist', productController.addToWishlist);
 
 
-
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build/index.html'))
+})
 app.listen(SERVER_PORT, () => console.log(`Server running on ${SERVER_PORT}`))

@@ -52,6 +52,7 @@ class ProductItem extends Component{
     console.log('user data');
     console.log(this.props.user);
     console.log('product data');
+    console.log(this.props);
     console.log(productList);
     const display = productList.map((products) =>(
       <div className='item-display'>
