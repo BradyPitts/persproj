@@ -13,7 +13,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use(express.static(`${__dirname}/../build`))
+app.use(express.static(`${__dirname}/../build`));
 
 massive({
   connectionString: CONNECTION_STRING,
@@ -54,8 +54,8 @@ app.put('/api/products', productController.addProduct);
 // app.get('/api/wishlist', productController.getWishlist);
 // app.post('/api/wishlist', productController.addToWishlist);
 
+app.listen(SERVER_PORT, () => console.log(`Server running on ${SERVER_PORT}`))
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../build/index.html'))
 })
-app.listen(SERVER_PORT, () => console.log(`Server running on ${SERVER_PORT}`))
