@@ -35,7 +35,6 @@ app.use(
   })
 );
 
-app.use(express.static(`${__dirname}/../build`));
 
 
 
@@ -57,6 +56,7 @@ app.put('/api/products', productController.addProduct);
 // app.post('/api/wishlist', productController.addToWishlist);
 
 
+app.use(express.static(__dirname +  '/../build'));
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../build/index.html'))
