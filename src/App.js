@@ -6,9 +6,9 @@ class App extends Component {
 
     render() {
         return (
-                <div id='app'>
-                    {routes}
-                </div>
+            <div id='app'>
+                {routes}
+            </div>
         );
     }
 }
