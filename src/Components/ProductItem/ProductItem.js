@@ -60,7 +60,7 @@ class ProductItem extends Component{
         <ul>
           <li>{products.product_name}</li>
           <li>{products.product_number}</li>
-          <li>{products.description} * Baby Not Included</li>
+          <li>{products.description}</li>
           <li>${products.price}</li>
           <li>stock: {products.stock_number}</li>
           {/* <li>{products.in_stock}</li> */}
