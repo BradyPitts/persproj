@@ -16,7 +16,7 @@ class Header extends Component{
   render(){
     return(
       <div id='header'>
-        <HashRouter>
+        {/* <HashRouter> */}
           
           <Link to='/' className='links'>Home</Link>
           <Link to='/Shop' className='links'>Shop</Link>
@@ -25,7 +25,7 @@ class Header extends Component{
           <Link to='/Cart' className='links'>Cart</Link>
          
           <Login />
-        </HashRouter>
+        {/* </HashRouter> */}
       </div>
     )
   }
