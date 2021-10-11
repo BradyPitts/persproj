@@ -8,7 +8,7 @@ module.exports = {
     return res.status(200).send(foundProduct);
   },
 
-  getAllFromCart: async (req,res) => {
+  getCart: async (req,res) => {
     console.log('getCart server ping');
     const {id} = req.body;
     console.log(id)
