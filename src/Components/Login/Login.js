@@ -42,8 +42,8 @@ class Login extends Component {
   }
       
   handleEmail(value) {
-      console.log(value);
-      this.setState({ email: value });
+    console.log(value);
+    this.setState({ email: value });
     }
   
   handlePassword(value) {

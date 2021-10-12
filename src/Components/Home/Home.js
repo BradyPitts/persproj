@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 // import Background from '../shared/Background/Background'
 import './Home.css';
-import { connect } from 'react-redux';
-import { requestUserData } from '../../redux/userReducer2';
+// import { connect } from 'react-redux';
+// import { requestUserData } from '../../redux/userReducer2';
 // import {requestBudgetData, addPurchase, removePurchase} from '../../redux/budgetReducer';
 import Header from '../Header/Header';
 import { Link } from 'react-router-dom';
@@ -35,9 +35,9 @@ class Home extends Component {
             <div id='Home' >
                 <div id={this.state.banner}>
 
-                    <img id='banner' src='./images/newbanner.jpg' />
+                    <img id='banner' alt='Wimpitts Banner' src='./images/newbanner.jpg' />
 
-                    <img id='arrow' src='./images/down-arrow.png' onClick={this.clickHandler}/>
+                    <img id='arrow' alt='Navigation Arrow' src='./images/down-arrow.png' onClick={this.clickHandler}/>
 
                 </div>
 
@@ -50,7 +50,7 @@ class Home extends Component {
                         </Link>
 
                         <Link to='/Shop' className='links'>
-                            <img id='shopImg' src='./images/shop.jpg' />
+                            <img id='shopImg' alt='Shop' src='./images/shop.jpg' />
                         </Link>
                     </div>
 
@@ -62,7 +62,7 @@ class Home extends Component {
                         </Link>
 
                         <Link to='/About' className='links'>
-                            <img id='aboutImg' src='./images/about.jpg' />
+                            <img id='aboutImg' alt='About' src='./images/about.jpg' />
                         </Link>
                     </div>
                 </div>

@@ -41,7 +41,7 @@ class Cart extends Component{
     console.log(cartList);
     const display = cartList.map((products, key) =>(
       <div className='item-display'>
-        <img src={products.product_image} />
+        <img alt={products.product_name} src={products.product_image} />
         <ul>
           <li>{products.product_name}</li>
           <li>{products.product_number}</li>
