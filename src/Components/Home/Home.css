@@ -8,25 +8,6 @@
   height:55vw;
 }
 
-#open{
-  width:100vw;
-}
-
-@keyframes hidebanner{
-  from{
-    transform:translateY(0%)
-  }
-  to{
-    transform: translateY(-100%);
-  }
-}
-
-#closed{
-  animation-name: hidebanner;
-  animation-duration: 1000ms;
-  display: none;
-}
-
 #arrow{
   /* position:relative;
   bottom:20vw;
@@ -106,9 +87,22 @@
     width: 10vw;
   }
 
+  #open{
+    width:100vw;
+  }
+  
+  @keyframes hidebanner{
+    from{
+      transform:translateY(0%)
+    }
+    to{
+      transform: translateY(-100%);
+    }
+  }
+  
   #closed{
     animation-name: hidebanner;
     animation-duration: 1000ms;
-    display:none;
+    display: none;
   }
 }

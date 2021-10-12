@@ -22,11 +22,11 @@ class Home extends Component {
       clickHandler = () => {
         // if(this.state.banner === 'closed'){
         //   this.setState({banner : 'open'}, () =>{
-        //   console.log(`the banner is now ${this.state.menu}`)})
+        //   console.log(`the banner is now ${this.state.banner}`)})
         // } 
         if(this.state.banner === 'open'){
           this.setState({banner: 'closed'})
-          console.log(`the banner is now ${this.state.menu}`)
+          console.log(`the banner is now ${this.state.banner}`)
         }
       }
 
