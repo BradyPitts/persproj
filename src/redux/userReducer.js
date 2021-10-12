@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+
 const initialState = {
   user_id: null,
   email: '',
@@ -7,7 +8,9 @@ const initialState = {
   admin: false,
   isLoggedIn: false
   
-}
+};
+
+
 
 
 const REQUEST_USER_DATA = 'REQUEST_USER_DATA'
@@ -15,6 +18,7 @@ const REGISTER_USER = 'REGISTER_USER'
 const LOGIN_USER = 'LOGIN_USER'
 const LOGOUT_USER = 'LOGOUT_USER'
 const CONTINUE_AS_GUEST = 'CONTINUE_AS_GUEST'
+const SEND_NEW_PASSWORD = 'SEND_NEW_PASSWORD'
 
 
 export const requestUserData = () =>{
@@ -67,6 +71,14 @@ export const logout = () => {
   }
 };
 
+export const sendNewPassword = (email) => {
+  console.log(email)
+  return{
+    type: SEND_NEW_PASSWORD,
+    // payload: userData
+  }
+};
+
 
 export const continueAsGuest = () => {
   console.log(`continue pressed`)
@@ -80,16 +92,19 @@ export default function reducer(state = initialState, action){
       console.log(action.payload)
       return {...state, user: action.payload};
 
-      case REGISTER_USER + "_FULFILLED":
-        console.log(action.payload)
-        return{...state, user_id:action.payload.user.user_id, admin:action.payload.user.admin, isLoggedIn:action.payload.isLoggedIn}
+    case REGISTER_USER + "_FULFILLED":
+      console.log(action.payload)
+      return{...state, user_id:action.payload.user.user_id, admin:action.payload.user.admin, isLoggedIn:action.payload.isLoggedIn}
 
-      case LOGIN_USER + "_FULFILLED":
-        console.log(action.payload)
-        return{...state, user_id:action.payload.user.user_id, admin:action.payload.user.admin, isLoggedIn:action.payload.isLoggedIn}
+    case LOGIN_USER + "_FULFILLED":
+      console.log(action.payload)
+      return{...state, user_id:action.payload.user.user_id, admin:action.payload.user.admin, isLoggedIn:action.payload.isLoggedIn}
 
-        case LOGOUT_USER + "_FULFILLED":
-          return{initialState}
+    case LOGOUT_USER + "_FULFILLED":
+      return{initialState}
+
+    case SEND_NEW_PASSWORD + "_FULFILLED":
+      return{initialState}
 
     default:
     // console.log(state)
