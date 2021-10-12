@@ -38,8 +38,12 @@ class Login extends Component {
                         <label>Password</label>
                         <input type="password" className="form-control" placeholder="Password" onChange={e => this.handlePassword(e.target.value)} />
                     </div>
-                    <button onClick={() => this.props.login(this.state.email, this.state.password)}>Log In</button>
-                    <button onClick={() => this.props.signUp(this.state.email, this.state.password, this.props.user.admin)}>Sign Up</button>
+
+                    <div id='buttons'>
+                      <button onClick={() => this.props.login(this.state.email, this.state.password)}>Log In</button>
+                      <button onClick={() => this.props.signUp(this.state.email, this.state.password, this.props.user.admin)}>Sign Up</button>
+                      <button onClick={() => this.props.signUp(this.state.email, this.state.password, this.props.user.admin)}>Forgot Password</button>
+                    </div>
                   </div>
 
                 }

@@ -8,6 +8,35 @@
   height:55vw;
 }
 
+#open{
+  width:100vw;
+}
+
+@keyframes hidebanner{
+  from{
+    transform:translateY(100%)
+  }
+  to{
+    transform: translateY(0%);
+  }
+}
+
+#closed{
+  animation-name: hidebanner;
+  animation-duration: 1000ms;
+  display: none;
+}
+
+#arrow{
+  /* position:relative;
+  bottom:20vw;
+  left: 80vw;
+  border-radius: 15vw;
+  height: 15vw;
+  width: 15vw; */
+  display: none;
+}
+
 #shopImg{
   width: 65vw;
   /* height:30vw; */
@@ -35,10 +64,10 @@
 }
 
 @media (min-width:1000px){
-  #banner{
+  /* #banner{
   height:100vh;
-  /* width:100%; */
-  }
+  width:100%;
+  } */
 
   #shopImg{
     width: 45vw;
@@ -65,5 +94,19 @@
   #links h2{
     display: contents;
     width: 10vw;
+  }
+
+  #arrow{
+    display:flex;
+    position:absolute;
+    bottom:10vw;
+    left: 80vw;
+    border-radius: 15vw;
+    height: 15vw;
+    width: 15vw;
+  }
+
+  #closed{
+    display:none;
   }
 }

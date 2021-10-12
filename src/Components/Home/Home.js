@@ -10,12 +10,36 @@ import { Link } from 'react-router-dom';
 
 
 class Home extends Component {
+    constructor(){
+        super();
+    
+        this.state = {
+          banner: 'open',
+    
+        }
+      }
 
+      clickHandler = () => {
+        // if(this.state.banner === 'closed'){
+        //   this.setState({banner : 'open'}, () =>{
+        //   console.log(`the banner is now ${this.state.menu}`)})
+        // } 
+        if(this.state.banner === 'open'){
+          this.setState({banner: 'closed'})
+          console.log(`the banner is now ${this.state.menu}`)
+        }
+      }
 
     render() {
         return (
             <div id='Home' >
-                <img id='banner' src='./images/newbanner.jpg' />
+                <div id={this.state.banner}>
+
+                    <img id='banner' src='./images/newbanner.jpg' />
+
+                    <img id='arrow' src='./images/down-arrow.png' onClick={this.clickHandler}/>
+
+                </div>
 
                 <Header />
 
