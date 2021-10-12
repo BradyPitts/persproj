@@ -14,10 +14,10 @@
 
 @keyframes hidebanner{
   from{
-    transform:translateY(100%)
+    transform:translateY(0%)
   }
   to{
-    transform: translateY(0%);
+    transform: translateY(-100%);
   }
 }
 
@@ -99,14 +99,16 @@
   #arrow{
     display:flex;
     position:absolute;
-    bottom:10vw;
-    left: 80vw;
-    border-radius: 15vw;
-    height: 15vw;
-    width: 15vw;
+    top: 40vw;
+    left: 85vw;
+    border-radius: 10vw;
+    height: 10vw;
+    width: 10vw;
   }
 
   #closed{
+    animation-name: hidebanner;
+    animation-duration: 1000ms;
     display:none;
   }
 }
