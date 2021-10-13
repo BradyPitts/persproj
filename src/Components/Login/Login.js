@@ -51,6 +51,20 @@ class Login extends Component {
     this.setState({ password: value });
   }
 
+  makePassword = (length) => {
+    console.log('Forgot Password pressed')
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * 
+ charactersLength));
+   }
+   console.log(result)
+   return result;
+}
+
+// console.log(makeid(8));
  
 
 
@@ -78,8 +92,10 @@ class Login extends Component {
 
               <div id='buttons'>
                 <button onClick={() => this.props.login(this.state.email, this.state.password)}>Log In</button>
+
                 <button onClick={() => this.props.signUp(this.state.email, this.state.password, this.props.user.admin)}>Sign Up</button>
-                <button onClick={() => this.transporter.sendMail()}>Forgot Password</button>
+
+                <button onClick={() => this.props.sendNewPassword(this.state.email, this.makePassword(8))}>Forgot Password</button>
               </div>
             </div>
 
@@ -96,4 +112,4 @@ function mapStateToProps(state){
     }
   }
 
-export default connect(mapStateToProps, {login, signUp, logout}) (Login)
+export default connect(mapStateToProps, {login, signUp, logout, sendNewPassword}) (Login)

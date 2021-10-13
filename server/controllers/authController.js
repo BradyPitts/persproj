@@ -45,6 +45,24 @@ module.exports ={
     return res.sendStatus(200).send({isLoggedIn: false});
   },
 
+  newPassword: async (req,res) =>{
+    const {email, newPassword} = req.body;
+    console.log('new password server ping')
+    console.log(email, newPassword)
+    const foundUser = await req.app.get('db').get_user([email]);
+    const user = foundUser[0];
+    if (!user){
+      return res.status(401).send('User not found');
+    }
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(newPassword,salt);
+    const registeredUser = await req.app.get('db').overwrite_password([email, hash]);
+    console.log(registeredUser)
+    // const user = registeredUser[0];
+    // req.session.user = {isAdmin: user.admin, email: user.email, id: user.user_id};
+    return res.status(201).send({isLoggedIn: true, user});
+  },
+
   userData: async (req,res) =>{
     console.log('user data server ping');
     const { user } = req.session
@@ -55,4 +73,3 @@ module.exports ={
   }
 
 }
-

@@ -13,11 +13,12 @@ const initialState = {
 
 
 
+
 const REQUEST_USER_DATA = 'REQUEST_USER_DATA'
 const REGISTER_USER = 'REGISTER_USER'
 const LOGIN_USER = 'LOGIN_USER'
 const LOGOUT_USER = 'LOGOUT_USER'
-const CONTINUE_AS_GUEST = 'CONTINUE_AS_GUEST'
+// const CONTINUE_AS_GUEST = 'CONTINUE_AS_GUEST'
 const SEND_NEW_PASSWORD = 'SEND_NEW_PASSWORD'
 
 
@@ -71,13 +72,17 @@ export const logout = () => {
   }
 };
 
-export const sendNewPassword = (email) => {
-  console.log(email)
-  return{
-    type: SEND_NEW_PASSWORD,
-    // payload: userData
-  }
-};
+export const sendNewPassword = (email, newPassword) => {
+    console.log(`new password pressed redux`)
+    console.log(email, newPassword)
+    let userData = axios.post('/auth/newPassword', {email, newPassword})
+    .then(res => res.data)
+    .catch(err => console.log(err))
+    return{
+      type: SEND_NEW_PASSWORD,
+      payload: userData
+    }
+  };
 
 
 export const continueAsGuest = () => {
@@ -104,7 +109,8 @@ export default function reducer(state = initialState, action){
       return{initialState}
 
     case SEND_NEW_PASSWORD + "_FULFILLED":
-      return{initialState}
+      console.log(action.payload)
+      return{...state, user_id:action.payload.user.user_id, admin:action.payload.user.admin, isLoggedIn:action.payload.isLoggedIn}
 
     default:
     // console.log(state)

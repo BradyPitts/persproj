@@ -44,6 +44,7 @@ app.post('/auth/signup', authController.signUp);
 app.post('/auth/login', authController.login);
 app.delete('/auth/logout', authController.logout);
 app.get('/auth/user-data', authController.userData);
+app.post('/auth/newPassword', authController.newPassword);
 
 app.get('/api/products', productController.getAll);
 app.post('/api/products', productController.addToCart);
