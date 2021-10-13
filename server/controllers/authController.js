@@ -1,4 +1,5 @@
 const bcrypt = require('bcryptjs');
+const nodemailer = require('nodemailer');
 
 module.exports ={
   
@@ -46,14 +47,43 @@ module.exports ={
   },
 
   newPassword: async (req,res) =>{
-    const {email, newPassword} = req.body;
     console.log('new password server ping')
+    const {email, newPassword} = req.body;
     console.log(email, newPassword)
+
     const foundUser = await req.app.get('db').get_user([email]);
     const user = foundUser[0];
     if (!user){
       return res.status(401).send('User not found');
     }
+
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        type: 'OAuth2',
+        user: process.env.MAIL_USERNAME,
+        pass: process.env.MAIL_PASSWORD,
+        clientId: process.env.OAUTH_CLIENTID,
+        clientSecret: process.env.OAUTH_CLIENT_SECRET,
+        refreshToken: process.env.OAUTH_REFRESH_TOKEN
+      }
+    });
+    
+    const mailOptions = {
+      from: process.env.MAIL_USERNAME,
+      to: email,
+      subject: 'Wimpitts Password Reset',
+      text:`Thank you for using our Password reset option. Your new password is ${newPassword}`
+    };
+    
+    transporter.sendMail(mailOptions, function(err, data){
+      if (err) {
+        console.log('Error' + err); 
+      } else {
+        console.log('Email sent')
+      }
+    })
+    
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(newPassword,salt);
     const registeredUser = await req.app.get('db').overwrite_password([email, hash]);

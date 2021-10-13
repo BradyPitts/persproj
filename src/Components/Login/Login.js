@@ -4,42 +4,13 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {login, signUp, logout, sendNewPassword} from '../../redux/userReducer';
 import './Login.css';
-const nodemailer = require('nodemailer');
 
 
 
 class Login extends Component {
-  constructor(){
-    super();
 
-      let transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          type: 'OAuth2',
-          user: process.env.MAIL_USERNAME,
-          pass: process.env.MAIL_PASSWORD,
-          clientId: process.env.OAUTH_CLIENTID,
-          clientSecret: process.env.OAUTH_CLIENT_SECRET,
-          refreshToken: process.env.OAUTH_REFRESH_TOKEN
-        }
-      });
-      
-      let mailOptions = {
-        from: process.env.MAIL_USERNAME,
-        to: process.env.MAIL_USERNAME,
-        subject: 'nodemailer test',
-        text:'hello'
-      };
-      
-      transporter.sendMail(mailOptions, function(err, data){
-        if (err) {
-          console.log('Error' + err); 
-        } else {
-          console.log('Email sent')
-        }
-      })
-      
-  }
+
+
       
   handleEmail(value) {
     console.log(value);
@@ -58,10 +29,12 @@ class Login extends Component {
     var charactersLength = characters.length;
     for ( var i = 0; i < length; i++ ) {
       result += characters.charAt(Math.floor(Math.random() * 
- charactersLength));
-   }
-   console.log(result)
-   return result;
+    charactersLength));
+    }
+    console.log(result)
+    this.setState({newPassword: result});
+    alert('A new Password has been generated and sent to your Email.')
+    return result
 }
 
 // console.log(makeid(8));

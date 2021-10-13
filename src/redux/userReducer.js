@@ -6,7 +6,8 @@ const initialState = {
   email: '',
   password: '',
   admin: false,
-  isLoggedIn: false
+  isLoggedIn: false,
+  newPassword: ''
   
 };
 

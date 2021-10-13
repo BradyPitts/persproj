@@ -7,6 +7,7 @@ const productController = require('./controllers/productController');
 const path = require('path');
 
 
+
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env;
 
 const app = express();
