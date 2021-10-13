@@ -78,12 +78,12 @@ module.exports ={
     
     transporter.sendMail(mailOptions, function(err, data){
       if (err) {
-        console.log('Error' + err); 
+        console.log(err); 
       } else {
         console.log('Email sent')
       }
     })
-    
+
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(newPassword,salt);
     const registeredUser = await req.app.get('db').overwrite_password([email, hash]);
